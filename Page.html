@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      main {
+        display: flex;
+        margin: 0 auto;
+        width: 80%;
+      }
+      main > section {
+        width: 50%;
+        height: 100vh;
+      }
+      main > section:nth-child(1) {
+        background-color: aqua;
+        width: 30%;
+      }
+      main > section:nth-child(2) {
+        background-color: green;
+        width: 70%;
+      }
+      #main_title {
+        background-color: red;
+        height: 50px;
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 60px;
+      }
+      #description_container {
+        background-color: yellow;
+        height: 300px;
+      }
+      .description_title {
+        background-color: red;
+        height: 50px;
+        margin-bottom: 30px;
+      }
+      .description_paragraph {
+        margin-bottom: 20px;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>s</section>
+      <section>
+        <h1 id="main_title">Titulo principal</h1>
+        <div id="description_container">
+          <h4 class="description_title"></h4>
+          <p class="description_paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida
+            congue massa, nec viverra risus ultricies quis. Etiam vitae eleifend
+            augue, ut porta magna. Maecenas eget mauris magna.
+          </p>
+          <p class="description_paragraph">
+            Maecenas interdum auctor fringilla. Nam mattis ex a elit sagittis,
+            eget tincidunt lacus accumsan. Vestibulum ante ipsum primis in
+            faucibus orci luctus et ultrices posuere cubilia curae; Praesent
+            porta nisl aliquet turpis gravida convallis.
+          </p>
+          <p class="description_paragraph">
+            Praesent semper erat ac odio bibendum convallis. Donec elementum
+            odio dolor, et cursus risus euismod porttitor. Pellentesque at
+            facilisis urna. Aenean sodales orci vitae pharetra feugiat.
+          </p>
+        </div>
+        <div></div>
+      </section>
+    </main>
+  </body>
+</html>
