@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form id="formCaptcha">
+      <div
+        class="g-recaptcha"
+        data-sitekey="6Le-i7cpAAAAANNmg4SvSKkcQUK6eU0OUVOkghUP"></div>
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+
+  <script>
+    window.onload = () => {
+      const form = document.getElementById('formCaptcha');
+      form.addEventListener('submit', handleSubmit);
+    };
+    function handleSubmit(e) {
+      e.preventDefault();
+      const response = grecaptcha.getResponse();
+      console.log(response);
+      if (response.length === 0) {
+        // reCAPTCHA not verified
+        alert('Please verify that you are not a robot.');
+        return false;
+      } else {
+        // reCAPTCHA verified
+        // You can proceed with form submission or other actions
+        alert('Captcha verified');
+      }
+    }
+  </script>
+</html>
