@@ -11,6 +11,8 @@ package arbol;
 public class Arbol {
 
     Nodo par;
+    Nodo parLeft;
+    Nodo parRight;
 
     public Arbol() {
 
@@ -33,49 +35,54 @@ public class Arbol {
         }
         return parent;
     }
-    public Nodo add(Nodo toAdd, Nodo parent){
-        if (parent==null){
-            parent=new Nodo();
-            parent=toAdd;
-            System.out.println("parent value"+parent.value);
-        }else{
-            if (parent.value < toAdd.value){
-                parent.right=add(toAdd, parent.right);
-            }else if(parent.value > toAdd.value) {
-                parent.right=add(toAdd, parent.right);
+
+    public Nodo add(Nodo toAdd, Nodo parent) {
+        if (parent == null) {
+            parent = new Nodo();
+            parent = toAdd;
+        } else {
+            if (parent.value < toAdd.value) {
+                parent.right = add(toAdd, parent.right);
+            } else if (parent.value > toAdd.value) {
+                parent.left = add(toAdd, parent.left);
             }
         }
-        
+
         return parent;
     }
 
+    public void remove (int value){
+        par=remove(value, par);
+        if(parLeft!=null){
+       add(parLeft, par);
+        }
+        if(parRight!=null){
+            add(parRight, par);
+        }
+    }
     public Nodo remove(int value, Nodo parent) {
         if (parent != null) {
             if (parent.value == value) {
-                Nodo parLeft = new Nodo();
-                Nodo parRight = new Nodo();
+                
+                
                 if (parent.left != null) {
-                    System.out.println("parent left"+parLeft.value);
-                    parLeft = parent.left;    
-                    par=add(parLeft,par );
+                    parLeft = new Nodo();
+                    parLeft = parent.left;
                 }
                 if (parent.right != null) {
+                    parRight = new Nodo();
                     parRight = parent.right;
-                    par=add(parRight,par );
-                    System.out.println("parent right"+parRight.value);
                 }
                 parent = null;
-            }
-            else if(parent.value < value){
-                parent.right=remove(value, parent.right);
-            }else{
-                parent.left=remove(value, parent.left);
+            } else if (parent.value < value) {
+                parent.right = remove(value, parent.right);
+            } else {
+                parent.left = remove(value, parent.left);
             }
         }
         return parent;
     }
 
-    
     public void inorder(Nodo parent) {
         if (parent != null) {
             inorder(parent.left);

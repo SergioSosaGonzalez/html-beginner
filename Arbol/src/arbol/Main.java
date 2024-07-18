@@ -24,8 +24,9 @@ public class Main {
         arb.add(8);
         arb.add(9);
         //arb.inorder(arb.par);
-        arb.par=arb.remove(5, arb.par);
+        arb.remove(5);
         //System.out.println("after removal");
         arb.inorder(arb.par);
+       
     }
 }
