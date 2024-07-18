@@ -9,5 +9,13 @@ package arbol;
  * @author vichy
  */
 public class Nodo {
+    Nodo right;
+    Nodo left;
+    int value;
+   
+   
+    public void Nodo(){
+        
+    }
     
 }
