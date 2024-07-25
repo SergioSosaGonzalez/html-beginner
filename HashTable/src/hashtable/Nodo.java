@@ -11,6 +11,6 @@ package hashtable;
 public class Nodo {
     Nodo next;
     int value;
-    int key;
+    String key;
     
 }

@@ -14,7 +14,7 @@ public class LinkedList {
         
     }
     
-    public void add(int key, int value){
+    public void add(String key, int value){
         Nodo nuevoNodo= new Nodo();
         nuevoNodo.key=key;
         nuevoNodo.value=value;

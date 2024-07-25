@@ -20,55 +20,85 @@ public class Table {
     }
 
     public void insert(String key, int value) {
-        int llave = loseloseHash(key);
-        insert(llave, value);
-    }
-
-    public void insert(int key, int value) {
-        if(arr[key]==null){
-            LinkedList lista= new LinkedList();
-            arr[key]=lista;
+        int posicion = loseloseHash(key);
+        if (arr[posicion] == null) {
+            LinkedList lista = new LinkedList();
+            arr[posicion] = lista;
         }
-            
-        arr[key].add(key, value);
-        
+
+        arr[posicion].add(key, value);
+
     }
 
     public int loseloseHash(String key) {
-        int len= key.length();
-        int hash=0;
-        for (int i=0; i<len; i++){
-            hash+=(int)key.charAt(i);
+        int len = key.length();
+        int hash = 0;
+        for (int i = 0; i < len; i++) {
+            hash += (int) key.charAt(i);
         }
-        hash= hash%100;
+        hash = hash % 100;
         return hash;
     }
 
-    public void print(){
-        for(LinkedList lin : arr){
-            if(lin!=null){
+    public void print() {
+        for (LinkedList lin : arr) {
+            if (lin != null) {
                 lin.print();
             }
         }
     }
-    
-    public void get( int key){
-        if(arr[key]!= null){
-            LinkedList temp= new LinkedList();
-            temp=arr[key];
-            System.out.println("El valor de KEY: "+temp.top.key+" es : "+temp.top.value);
-            System.out.println("VALORES:");
-            temp.print();
-        }
-        else {
-            System.out.println("No existe el KEY ");
+
+    public void get(String key) {
+        int posicion = loseloseHash(key);
+        if (arr[posicion] != null) {
+            Nodo temp = new Nodo();
+            temp = arr[posicion].top;
+
+            while (temp != null) {
+                if (temp.key == key) {
+                    System.out.println("KEY: " + temp.key + " VALUE: " + temp.value);
+                    break;
+                } else {
+                    if (temp.next == null) {
+                        System.out.println("No existe el KEY ");
+                    }
+                    temp = temp.next;
+                }
+            }
+        } else {
+            System.out.println("No existe el KEY");
         }
     }
-    public void get(String key){
-        int llave= loseloseHash(key);
-        get(llave);
-    }
-    public void remove (){
+
+    public void remove(String key) {
+
+        int posicion = loseloseHash(key);
+        if (arr[posicion] == null) {
+            System.out.println("No existe el KEY");
+        } else {
+            Nodo temp= new Nodo();
+            temp= arr[posicion].top;
+            Nodo toRemove = new Nodo();
+
+            if (temp.key==key){
+                arr[posicion].top=temp.next;
+                System.out.println("Removed top key "+temp.key+ " VALUE "+ temp.value);
+                return;
+            }else{
+            while(temp.next!= null){
+                if(temp.next.key == key){
+                    toRemove= temp.next;
+                    temp.next=toRemove.next;
+                    System.out.println("removed "+toRemove.key + " VALUE "+toRemove.value);
+                    return;
+                }
+                else{
+                    temp= temp.next;
+                }
+            }
+            }
+        }
         
     }
+
 }

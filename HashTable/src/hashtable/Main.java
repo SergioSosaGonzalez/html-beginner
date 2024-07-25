@@ -15,15 +15,19 @@ public class Main {
     
     public static void main(String args[]){
        Table tabla = new Table();
-        tabla.insert("hola", 0);
-        tabla.insert("mundo", 1);
+        tabla.insert("apple", 0);
+        tabla.insert("elppa", 1);
+        tabla.insert("ppale", 6);
         tabla.insert("!!!", 2);
-        tabla.insert("hola", 3);
-        tabla.insert("hola", 5);
-        tabla.insert("hol", 4);
+        tabla.insert("k", 3);
+        tabla.insert("5", 5);
+        tabla.insert("8", 4);
         tabla.print();
+   
         
-        tabla.get("hol");
+        tabla.get("elppa");
+        tabla.remove("elppa");
+        tabla.print();
         
     }
 }
